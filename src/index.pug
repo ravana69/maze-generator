@@ -1,0 +1,12 @@
+#app
+	#controls
+		button#reboot(@click="initGen(); mazeGen()") Reboot
+	#mazeContainer(:style="`min-width: max(${width * 5}px, 80vh)`")
+		#maze(
+			:style="`grid-template-columns: repeat(${grid[0].length}, 1fr); background-color: ${activeColor}`"
+		)
+			template(v-for="(line, y) of grid")
+				.cell(
+					v-for="(cell, x) of line",
+					:class="[`${cell.classes.join(' ')}`, { 'photo-mode': photoMode }, { examined: cell.examined }]"
+				)

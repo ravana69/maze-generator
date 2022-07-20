@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>CodePen - maze generator</title>
+  <link rel="stylesheet" href="./style.css">
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<div id="app">
+  <div id="controls">
+    <button id="reboot" @click="initGen(); mazeGen()">Reboot</button>
+  </div>
+  <div id="mazeContainer" :style="`min-width: max(${width * 5}px, 80vh)`">
+    <div id="maze" :style="`grid-template-columns: repeat(${grid[0].length}, 1fr); background-color: ${activeColor}`">
+      <template v-for="(line, y) of grid">
+        <div class="cell" v-for="(cell, x) of line" :class="[`${cell.classes.join(' ')}`, { 'photo-mode': photoMode }, { examined: cell.examined }]"></div>
+      </template>
+    </div>
+  </div>
+</div>
+<!-- partial -->
+  <script src='https://unpkg.com/vue@3.2.23/dist/vue.global.js'></script><script  src="./script.js"></script>
+
+</body>
+</html>

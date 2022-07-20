@@ -1,0 +1,75 @@
+body {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background-color: #222;
+	height: 100vh;
+	margin: 0;
+	#app {
+		#controls {
+			text-align: center;
+			margin-bottom: 10px;
+		}
+		#mazeContainer {
+			position: relative;
+			min-width: 80vh;
+			&::before {
+				content: "";
+				display: block;
+				width: 100%;
+				padding-bottom: 100%;
+			}
+			#maze {
+				position: absolute;
+				top: 0;
+				bottom: 0;
+				right: 0;
+				left: 0;
+				display: grid;
+				border: 1px solid #000;
+				transition: all 0.9s linear;
+				.cell {
+					min-height: 3px;
+					min-width: 3px;
+					position: relative;
+					border: 1px solid #000;
+					transition: all 0.05s linear;
+					&::before {
+						content: "";
+						width: 100%;
+						padding-bottom: 100%;
+						display: block;
+					}
+					&.open-top {
+						border-top: transparent;
+					}
+					&.open-bottom {
+						border-bottom: transparent;
+					}
+					&.open-right {
+						border-right: transparent;
+					}
+					&.open-left {
+						border-left: transparent;
+					}
+					&:not(.filled):not(.examined) {
+						background-color: #000;
+					}
+					&.filled {
+						background-color: #aaa;
+						&.photo-mode {
+							background-attachment: fixed;
+							background-position: center;
+							background-image: url("https://picsum.photos/1000");
+							background-repeat: no-repeat;
+						}
+					}
+					&.examined {
+						background-image: unset !important;
+						background-color: transparent;
+					}
+				}
+			}
+		}
+	}
+}

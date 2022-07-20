@@ -1,0 +1,73 @@
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #222;
+  height: 100vh;
+  margin: 0;
+}
+body #app #controls {
+  text-align: center;
+  margin-bottom: 10px;
+}
+body #app #mazeContainer {
+  position: relative;
+  min-width: 80vh;
+}
+body #app #mazeContainer::before {
+  content: "";
+  display: block;
+  width: 100%;
+  padding-bottom: 100%;
+}
+body #app #mazeContainer #maze {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  display: grid;
+  border: 1px solid #000;
+  transition: all 0.9s linear;
+}
+body #app #mazeContainer #maze .cell {
+  min-height: 3px;
+  min-width: 3px;
+  position: relative;
+  border: 1px solid #000;
+  transition: all 0.05s linear;
+}
+body #app #mazeContainer #maze .cell::before {
+  content: "";
+  width: 100%;
+  padding-bottom: 100%;
+  display: block;
+}
+body #app #mazeContainer #maze .cell.open-top {
+  border-top: transparent;
+}
+body #app #mazeContainer #maze .cell.open-bottom {
+  border-bottom: transparent;
+}
+body #app #mazeContainer #maze .cell.open-right {
+  border-right: transparent;
+}
+body #app #mazeContainer #maze .cell.open-left {
+  border-left: transparent;
+}
+body #app #mazeContainer #maze .cell:not(.filled):not(.examined) {
+  background-color: #000;
+}
+body #app #mazeContainer #maze .cell.filled {
+  background-color: #aaa;
+}
+body #app #mazeContainer #maze .cell.filled.photo-mode {
+  background-attachment: fixed;
+  background-position: center;
+  background-image: url("https://picsum.photos/1000");
+  background-repeat: no-repeat;
+}
+body #app #mazeContainer #maze .cell.examined {
+  background-image: unset !important;
+  background-color: transparent;
+}
